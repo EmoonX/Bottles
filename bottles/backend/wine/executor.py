@@ -35,6 +35,7 @@ class WineExecutor:
         move_upd_fn: callable = None,
         pre_script: Optional[str] = None,
         post_script: Optional[str] = None,
+        midi_soundfont: Optional[str] = None,
         monitoring: Optional[list] = None,
         program_dxvk: Optional[bool] = None,
         program_vkd3d: Optional[bool] = None,
@@ -64,6 +65,7 @@ class WineExecutor:
         self.environment = environment
         self.pre_script = pre_script
         self.post_script = post_script
+        self.midi_soundfont = midi_soundfont
         self.monitoring = monitoring
         self.use_gamescope = program_gamescope
         self.use_virt_desktop = program_virt_desktop
@@ -121,6 +123,7 @@ class WineExecutor:
             cwd=program.get("folder"),
             pre_script=program.get("pre_script"),
             post_script=program.get("post_script"),
+            midi_soundfont=program.get["midi_soundfont"],
             terminal=terminal,
             program_dxvk=program.get("dxvk"),
             program_vkd3d=program.get("vkd3d"),
@@ -211,6 +214,7 @@ class WineExecutor:
             pre_script=self.pre_script,
             post_script=self.post_script,
             cwd=self.cwd,
+            midi_soundfont=self.midi_soundfont,
         )
         return Result(status=True, data={"output": res})
 
@@ -277,6 +281,7 @@ class WineExecutor:
             communicate=True,
             pre_script=self.pre_script,
             post_script=self.post_script,
+            midi_soundfont=self.midi_soundfont,
         )
         res = winecmd.run()
         self.__set_monitors()
@@ -315,6 +320,7 @@ class WineExecutor:
             pre_script=self.pre_script,
             post_script=self.post_script,
             cwd=self.cwd,
+            midi_soundfont=self.midi_soundfont,
         )
         self.__set_monitors()
         return Result(status=True, data={"output": res})
