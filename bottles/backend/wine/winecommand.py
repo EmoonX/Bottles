@@ -603,6 +603,13 @@ class WineCommand:
 
         if pre_script is not None:
             command = f"sh '{pre_script}' ; {command}"
+        
+        if midi_soundfont is not None:
+            command = f"""
+                flatpak-spawn --host fluidsynth --server --audio-driver=pulseaudio {midi_soundfont} &
+                {command}
+                flatpak-spawn --host killall fluidsynth
+            """
 
         return command
 
