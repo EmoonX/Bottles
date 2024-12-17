@@ -366,6 +366,8 @@ class LaunchOptionsDialog(Adw.Window):
             action=Gtk.FileChooserAction.OPEN,
         )
 
+        add_soundfont_filters(dialog)
+        add_all_filters(dialog)
         dialog.set_modal(True)
         dialog.connect("response", set_path)
         dialog.show()
