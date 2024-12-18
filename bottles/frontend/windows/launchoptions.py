@@ -191,7 +191,7 @@ class LaunchOptionsDialog(Adw.Window):
         ]:
             self.action_cwd.set_subtitle(program["folder"])
             self.btn_cwd_reset.set_visible(True)
-        
+
         if program.get("midi_soundfont") not in ["", None]:
             self.action_midi_soundfont.set_subtitle(program["midi_soundfont"])
             self.btn_midi_soundfont_reset.set_visible(True)
@@ -349,7 +349,7 @@ class LaunchOptionsDialog(Adw.Window):
         )
         self.action_cwd.set_subtitle(self.__default_cwd_msg)
         self.btn_cwd_reset.set_visible(False)
-    
+
     def __choose_midi_soundfont(self, *_args):
         def set_path(dialog, response):
             if response != Gtk.ResponseType.ACCEPT:

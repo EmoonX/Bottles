@@ -603,7 +603,7 @@ class WineCommand:
 
         if pre_script is not None:
             command = f"sh '{pre_script}' ; {command}"
-        
+
         if midi_soundfont is not None:
             command = f"""
                 # start fluidsynth in dedicated terminal
