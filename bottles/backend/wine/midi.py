@@ -37,6 +37,6 @@ class MIDI:
         reg.add(
             key="HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Multimedia\\MIDIMap",
             value="CurrentInstrument",
-            data=f"#{id}",
+            data=f"#{idx}",
             value_type="REG_SZ",
         )
