@@ -65,7 +65,7 @@ class LaunchOptionsDialog(Adw.Window):
     __default_pre_script_msg = _("Choose a script which should be executed before run.")
     __default_post_script_msg = _("Choose a script which should be executed after run.")
     __default_cwd_msg = _("Choose from where start the program.")
-    __default_midi_soundfont_msg = _("Choose a custom game-specific SoundFont for MIDI playback.")
+    __default_midi_soundfont_msg = _("Choose a custom SoundFont for MIDI playback.")
     __msg_disabled = _("{0} is disabled globally for this bottle.")
     __msg_override = _("This setting overrides the bottle's global setting.")
 
