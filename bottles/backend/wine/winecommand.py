@@ -606,9 +606,17 @@ class WineCommand:
         
         if midi_soundfont is not None:
             command = f"""
-                flatpak-spawn --host fluidsynth --server --audio-driver=pulseaudio {midi_soundfont} &
+                # start fluidsynth in dedicated terminal
+                # (as, for some reason, fluidsynth doesn't like being run with &)
+                fluidsynth="fluidsynth --server --audio-driver=pipewire '{midi_soundfont}'"
+                flatpak-spawn --host gnome-terminal -- bash -c "$fluidsynth"
+
+                # save PID to individually kill process afterwards
+                fluidsynth_pid=$(flatpak-spawn --host pidof fluidsynth | cut -d " " -f 1)
+
                 {command}
-                flatpak-spawn --host killall fluidsynth
+
+                flatpak-spawn --host kill $fluidsynth_pid
             """
 
         return command
