@@ -1,6 +1,7 @@
 from bottles.backend.models.config import BottleConfig
 from bottles.backend.wine.reg import Reg
 
+
 class MIDI:
     instruments = {}
 

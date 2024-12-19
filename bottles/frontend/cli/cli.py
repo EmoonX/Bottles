@@ -633,16 +633,6 @@ class CLI:
         _keep = self.args.keep_args
         _args = " ".join(self.args.args)
         _executable = self.args.executable
-        _cwd = None
-        _pre_script = None
-        _post_script = None
-        _midi_soundfont = None
-        _program_dxvk = None
-        _program_vkd3d = None
-        _program_dxvk_nvapi = None
-        _program_fsr = None
-        _program_gamescope = None
-        _program_virt_desktop = None
 
         mng = Manager(g_settings=self.settings, is_cli=True)
         mng.checks()

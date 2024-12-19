@@ -351,24 +351,23 @@ class LaunchOptionsDialog(Adw.Window):
             self.config, self.program["path"]
         )
         self.action_cwd.set_subtitle(self.__default_cwd_msg)
-        self.btn_cwd_reset.set_visible(False)        
+        self.btn_cwd_reset.set_visible(False)
 
     def __choose_midi_soundfont(self, *_args):
-        
         def set_path(dialog, result):
-            
             try:
                 file = dialog.open_finish(result)
                 if file is None:
                     self.action_midi_soundfont.set_subtitle(
-                        self.__default_midi_soundfont_msg)
+                        self.__default_midi_soundfont_msg
+                    )
                     return
 
                 file_path = file.get_path()
                 self.program["midi_soundfont"] = file_path
                 self.action_midi_soundfont.set_subtitle(file_path)
                 self.btn_midi_soundfont_reset.set_visible(True)
-                
+
             except GLib.Error as error:
                 # also thrown when dialog has been cancelled
                 if error.code == 2:
@@ -384,10 +383,10 @@ class LaunchOptionsDialog(Adw.Window):
         dialog = Gtk.FileDialog.new()
         dialog.set_title(_("Select MIDI SoundFont"))
         dialog.set_modal(True)
-        
+
         add_soundfont_filters(dialog)
         add_all_filters(dialog)
-        
+
         dialog.open(parent=self.window, callback=set_path)
 
     def __reset_midi_soundfont(self, *_args):
