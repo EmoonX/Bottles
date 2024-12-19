@@ -23,7 +23,6 @@ logging = Logger()
 
 
 class WineExecutor:
-
     def __init__(
         self,
         config: BottleConfig,
